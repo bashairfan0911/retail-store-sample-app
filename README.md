@@ -280,7 +280,7 @@ git commit -m "Add new feature to UI"
 git push origin gitops
 
 # 3. Monitor deployment
-# - Check GitHub Actions: https://github.com/LondheShubham153/actions
+# - Check GitHub Actions: https://github.com/bashairfan0911/actions
 # - Check ArgoCD UI: https://localhost:9090
 ```
 
