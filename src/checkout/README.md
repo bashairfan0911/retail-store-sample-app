@@ -18,9 +18,9 @@ The following environment variables are available for configuring the service:
 | `RETAIL_CHECKOUT_PERSISTENCE_REDIS_URL` | The endpoint of the Redis server used to store state.                    | `""`        |
 | `RETAIL_CHECKOUT_ENDPOINTS_ORDERS`      | The endpoint of the orders API. If empty uses a mock implementation      | `""`        |
 | `RETAIL_CHECKOUT_SHIPPING_NAME_PREFIX`  | A string prefix that can be applied to the names of the shipping options | `""`        |
-
+<!-- Test commit -->
 ## Endpoints
-
+<!-- Test commit -->
 Several "utility" endpoints are provided with useful functionality for various scenarios:
 
 | Method   | Name                     | Description                                                                        |

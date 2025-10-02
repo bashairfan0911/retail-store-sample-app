@@ -23,9 +23,9 @@ The following environment variables are available for configuring the service:
 | RETAIL_CATALOG_PERSISTENCE_USER            | Database user                                                   | `catalog_user` |
 | RETAIL_CATALOG_PERSISTENCE_PASSWORD        | Database password                                               | `""`           |
 | RETAIL_CATALOG_PERSISTENCE_CONNECT_TIMEOUT | Database connection timeout in seconds                          | `5`            |
-
+<!-- Test commit -->
 ## Endpoints
-
+<!-- Test commit -->
 Several "utility" endpoints are provided with useful functionality for various scenarios:
 <!-- Test commit -->
 | Method   | Name                     | Description                                                                        |
