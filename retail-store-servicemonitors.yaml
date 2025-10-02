@@ -1,0 +1,94 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: retail-store-ui
+  namespace: monitoring
+  labels:
+    release: kube-prometheus-stack
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: ui
+  namespaceSelector:
+    matchNames:
+    - retail-store
+  endpoints:
+  - port: http
+    path: /actuator/prometheus
+    interval: 30s
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: retail-store-catalog
+  namespace: monitoring
+  labels:
+    release: kube-prometheus-stack
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: catalog
+  namespaceSelector:
+    matchNames:
+    - retail-store
+  endpoints:
+  - port: http
+    path: /actuator/prometheus
+    interval: 30s
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: retail-store-cart
+  namespace: monitoring
+  labels:
+    release: kube-prometheus-stack
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: carts
+  namespaceSelector:
+    matchNames:
+    - retail-store
+  endpoints:
+  - port: http
+    path: /actuator/prometheus
+    interval: 30s
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: retail-store-checkout
+  namespace: monitoring
+  labels:
+    release: kube-prometheus-stack
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: checkout
+  namespaceSelector:
+    matchNames:
+    - retail-store
+  endpoints:
+  - port: http
+    path: /actuator/prometheus
+    interval: 30s
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: retail-store-orders
+  namespace: monitoring
+  labels:
+    release: kube-prometheus-stack
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: orders
+  namespaceSelector:
+    matchNames:
+    - retail-store
+  endpoints:
+  - port: http
+    path: /actuator/prometheus
+    interval: 30s
