@@ -9,7 +9,7 @@
 This service provides an API for storing customer shopping carts. Data is stored in Amazon DynamoDB.
 
 ## Configuration
-
+This service provides an API for storing customer shopping carts. Data is stored in Amazon DynamoDB.
 The following environment variables are available for configuring the service:
 <!-- Test commit -->
 | Name                                            | Description                                                        | Default     |
