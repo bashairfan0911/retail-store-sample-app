@@ -45,7 +45,7 @@ You can deploy in two phases for better control:
 ```bash
 # Initialize Terraform
 terraform init
-
+# deploy
 # Deploy only the EKS cluster and VPC
 terraform apply -target=module.retail_app_eks -target=module.vpc --auto-approve
 ```
