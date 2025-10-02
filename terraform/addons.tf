@@ -87,15 +87,28 @@ module "eks_addons" {
   }
 
   # =============================================================================
-  # OPTIONAL: MONITORING STACK
+  # MONITORING STACK - Prometheus & Grafana
   # =============================================================================
-  # Uncomment below to enable monitoring (increases costs)
   
-  # enable_kube_prometheus_stack = var.enable_monitoring
-  # kube_prometheus_stack = {
-  #   most_recent = true
-  #   namespace   = "monitoring"
-  # }
+  enable_kube_prometheus_stack = var.enable_monitoring
+  kube_prometheus_stack = {
+    most_recent = true
+    namespace   = "monitoring"
+    set = [
+      {
+        name  = "grafana.adminPassword"
+        value = "admin123"
+      },
+      {
+        name  = "grafana.service.type"
+        value = "LoadBalancer"
+      },
+      {
+        name  = "prometheus.prometheusSpec.retention"
+        value = "7d"
+      }
+    ]
+  }
 
   # =============================================================================
   # OPTIONAL: AWS LOAD BALANCER CONTROLLER
