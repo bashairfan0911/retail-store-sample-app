@@ -1,12 +1,12 @@
-# Default values for ui.
+# Default values for orders.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
 image:
-  repository: 485126686729.dkr.ecr.us-west-2.amazonaws.com/retail-store-ui
+  repository: public.ecr.aws/aws-containers/retail-store-sample-orders
   pullPolicy: Always
-  tag: "d2f383a"
+  tag: "1.2.2"
 imagePullSecrets:
   - name: regcred
 nameOverride: ""
@@ -26,28 +26,24 @@ securityContext:
   capabilities:
     drop:
       - ALL
-    add:
-      - NET_BIND_SERVICE
   readOnlyRootFilesystem: true
   runAsNonRoot: true
   runAsUser: 1000
 service:
   type: ClusterIP
   port: 80
-  # annotations: {}
-  # loadBalancerClass: ""
-  # nodePort: 30000
 resources:
   limits:
     memory: 512Mi
   requests:
-    cpu: 128m
+    cpu: 256m
     memory: 512Mi
 autoscaling:
   enabled: false
   minReplicas: 1
   maxReplicas: 10
-  targetCPUUtilizationPercentage: 50
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
 nodeSelector: {}
 tolerations: []
 affinity: {}
@@ -60,82 +56,74 @@ metrics:
     prometheus.io/path: "/actuator/prometheus"
 configMap:
   create: true
-  name: # if blank this will be generated
+  name:
 app:
-  # theme: default
-  endpoints:
-    catalog: http://retail-store-catalog:80
-    carts: http://retail-store-cart-carts:80
-    orders: http://retail-store-orders:80
-    checkout: http://retail-store-checkout:80
-  chat:
+  persistence:
+    provider: 'in-memory'
+    endpoint: ''
+    database: 'orders'
+    secret:
+      create: true
+      name: orders-db
+      username: orders
+      password: ""
+  messaging:
+    provider: 'in-memory'
+    rabbitmq:
+      addresses: []
+      secret:
+        create: true
+        name: orders-rabbitmq
+        username: ""
+        password: ""
+postgresql:
+  create: false
+  image:
+    repository: public.ecr.aws/docker/library/postgres
+    pullPolicy: IfNotPresent
+    tag: "13"
+  service:
+    type: ClusterIP
+    port: 5432
+  podAnnotations: {}
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+  persistentVolume:
     enabled: false
-    provider: ""
-    model: ""
-    # temperature: 0.7
-    # maxTokens: 300
-    # prompt: |
-    #   This will override the default system prompt
-    bedrock:
-      region: ""
-    openai:
-      baseUrl: ""
-      # apiKey: ""
-## Ingress for NGINX Ingress Controller
-ingress:
-  enabled: false
-  className: "nginx"
-  annotations:
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    nginx.ingress.kubernetes.io/proxy-body-size: "8m"
-    nginx.ingress.kubernetes.io/proxy-connect-timeout: "30"
-    nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
-    nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
-  tls: []
-  hosts: []
-ingresses:
-  # Direct ELB access - no host restriction
-  - name: direct
-    className: "nginx"
-    hosts: []
-    annotations:
-      nginx.ingress.kubernetes.io/ssl-redirect: "false"
-      nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
-      nginx.ingress.kubernetes.io/proxy-body-size: "8m"
-      nginx.ingress.kubernetes.io/proxy-connect-timeout: "30"
-      nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
-      nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
-    tls: []
-  # Domain-based access with SSL
-  - name: domain
-    className: "nginx"
-    hosts:
-      - retail-store.trainwithshubham.com
-    annotations:
-      nginx.ingress.kubernetes.io/ssl-redirect: "true"
-      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-      cert-manager.io/cluster-issuer: "letsencrypt-prod"
-      nginx.ingress.kubernetes.io/proxy-body-size: "8m"
-      nginx.ingress.kubernetes.io/proxy-connect-timeout: "30"
-      nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
-      nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
-    tls:
-      - secretName: tls-secret
-        hosts:
-          - retail-store.trainwithshubham.com
-
-# Cert Manager Configuration
-certManager:
-  createClusterIssuer: true
-  email: trainwithshubham@gmail.com
-  clusterIssuerName: "letsencrypt-prod"
-  server: "https://acme-v02.api.letsencrypt.org/directory"
-  privateKeySecretName: "letsencrypt-prod-key"
-istio:
-  enabled: false
-  hosts: []
+    annotations: {}
+    labels: {}
+    accessModes:
+      - ReadWriteOnce
+    size: 10Gi
+    # storageClass: gp2
+rabbitmq:
+  create: false
+  image:
+    repository: public.ecr.aws/docker/library/rabbitmq
+    pullPolicy: IfNotPresent
+    tag: "3.8-management"
+  service:
+    type: ClusterIP
+    amqp:
+      port: 5672
+    http:
+      port: 15672
+  podAnnotations: {}
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+  persistentVolume:
+    enabled: false
+    annotations: {}
+    labels: {}
+    accessModes:
+      - ReadWriteOnce
+    size: 10Gi
+    # storageClass: gp2
+securityGroups:
+  create: false
+  securityGroupIds: []
 opentelemetry:
   enabled: false
   instrumentation: ""
