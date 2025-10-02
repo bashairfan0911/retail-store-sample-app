@@ -19,6 +19,8 @@ module "eks_addons" {
   cert_manager = {
     most_recent = true
     namespace   = "cert-manager"
+    wait        = true
+    timeout     = 600
   }
 
   # =============================================================================
@@ -28,6 +30,8 @@ module "eks_addons" {
   ingress_nginx = {
     most_recent = true
     namespace   = "ingress-nginx"
+    wait        = true
+    timeout     = 600
     
     # Basic configuration
     set = [
@@ -95,16 +99,15 @@ module "eks_addons" {
   kube_prometheus_stack = {
     most_recent = true
     namespace   = "monitoring"
+    wait        = true
+    timeout     = 600
   }
 
   # =============================================================================
   # OPTIONAL: AWS LOAD BALANCER CONTROLLER
   # =============================================================================
-  enable_aws_load_balancer_controller = true
-  aws_load_balancer_controller = {
-    most_recent = true
-    namespace   = "kube-system"
-  }
+  # NOTE: Disabled because we're using NGINX Ingress with NLB instead
+  # enable_aws_load_balancer_controller = false
 
   depends_on = [module.retail_app_eks]
 }
