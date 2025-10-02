@@ -73,7 +73,7 @@ app:
       region: ""
   endpoints:
     catalog: "http://retail-store-catalog"
-    carts: "http://retail-store-cart"
+    carts: "http://retail-store-cart-carts"
     checkout: "http://retail-store-checkout"
     orders: "http://retail-store-orders"
     assets: ""
