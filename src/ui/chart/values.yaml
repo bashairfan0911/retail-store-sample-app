@@ -58,6 +58,25 @@ configMap:
   create: true
   name:
 app:
+  theme: ""
+  chat:
+    enabled: false
+    provider: ""
+    model: ""
+    temperature: ""
+    maxTokens: ""
+    prompt: ""
+    openai:
+      baseUrl: ""
+      apiKey: ""
+    bedrock:
+      region: ""
+  endpoints:
+    catalog: "http://retail-store-catalog"
+    carts: "http://retail-store-cart"
+    checkout: "http://retail-store-checkout"
+    orders: "http://retail-store-orders"
+    assets: ""
   persistence:
     provider: 'in-memory'
     endpoint: ''
