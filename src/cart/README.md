@@ -1,15 +1,18 @@
 # AWS Containers Retail Sample - Cart Service
 
-<!-- Test commit -->
+<!-- Last Updated: October 2, 2025 -->
+<!-- ArgoCD GitOps Deployment - Auto-sync enabled -->
+
+**Status:** ✅ Deployed and Running on EKS
+**Version:** Latest from gitops branch
 
 | Language | Persistence     |
 | -------- | --------------- |
 | Java     | Amazon DynamoDB |
-<!-- Test commit -->
+
 This service provides an API for storing customer shopping carts. Data is stored in Amazon DynamoDB.
 
 ## Configuration
-This service provides an API for storing customer shopping carts. Data is stored in Amazon DynamoDB.
 The following environment variables are available for configuring the service:
 <!-- Test commit -->
 | Name                                            | Description                                                        | Default     |

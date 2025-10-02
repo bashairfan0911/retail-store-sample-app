@@ -23,11 +23,13 @@
 - [Prerequisites](#-prerequisites)
 - [Installation](#-installation)
 - [Deployment](#-deployment)
+- [Access Your Applications](#-access-your-applications)
 - [GitOps Workflow](#-gitops-workflow)
 - [Monitoring](#-monitoring)
+- [Automation Scripts](#-automation-scripts)
 - [Troubleshooting](#-troubleshooting)
 - [Cleanup](#-cleanup)
-- [Advanced Topics](#-advanced-topics)
+- [Documentation](#-documentation)
 
 ## Quick Start
 

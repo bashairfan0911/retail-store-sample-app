@@ -1,8 +1,10 @@
 # AWS Containers Retail Sample - UI Service
 
-<!-- GitOps Test: Testing deploy-simple.yml workflow -->
-# AWS Containers Retail Sample - UI Service
-<!-- Test commit -->
+<!-- Last Updated: October 2, 2025 -->
+<!-- ArgoCD GitOps Deployment - Auto-sync enabled -->
+
+**Status:** ✅ Deployed and Running on EKS
+**Version:** Latest from gitops branch
 
 | Language | Persistence |
 | -------- | ----------- |

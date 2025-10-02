@@ -1,5 +1,10 @@
 # AWS Containers Retail Sample - Checkout Service
-<!-- Test commit -->
+
+<!-- Last Updated: October 2, 2025 -->
+<!-- ArgoCD GitOps Deployment - Auto-sync enabled -->
+
+**Status:** ✅ Deployed and Running on EKS
+**Version:** Latest from gitops branch
 
 | Language | Persistence |
 | -------- | ----------- |

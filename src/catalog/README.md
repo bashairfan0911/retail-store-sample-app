@@ -1,12 +1,14 @@
+# AWS Containers Retail Sample - Catalog Service
 
+<!-- Last Updated: October 2, 2025 -->
+<!-- ArgoCD GitOps Deployment - Auto-sync enabled -->
 
-<!-- Test commit -->
+**Status:** ✅ Deployed and Running on EKS
+**Version:** Latest from gitops branch
 
 | Language | Persistence |
 | -------- | ----------- |
 | Go       | MySQL       |
-<!-- Test commit -->
-<!-- Test commit -->
 
 This service provides an API for retrieving product catalog information. Data is stored in a MySQL database.
 

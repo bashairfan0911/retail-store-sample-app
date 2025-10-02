@@ -1,10 +1,12 @@
 # AWS Containers Retail Sample - Orders Service
 
+<!-- Last Updated: October 2, 2025 -->
+<!-- ArgoCD GitOps Deployment - Auto-sync enabled -->
 
+**Status:** ✅ Deployed and Running on EKS
+**Version:** Latest from gitops branch
 
 | Language | Persistence |
-| -------- | ----------- |
-| Java     | MySQL       |
 | -------- | ----------- |
 | Java     | MySQL       |
 
