@@ -5,6 +5,8 @@
 | Language | Persistence |
 | -------- | ----------- |
 | Go       | MySQL       |
+<!-- Test commit -->
+<!-- Test commit -->
 
 This service provides an API for retrieving product catalog information. Data is stored in a MySQL database.
 
@@ -25,7 +27,7 @@ The following environment variables are available for configuring the service:
 ## Endpoints
 
 Several "utility" endpoints are provided with useful functionality for various scenarios:
-
+<!-- Test commit -->
 | Method   | Name                     | Description                                                                        |
 | -------- | ------------------------ | ---------------------------------------------------------------------------------- |
 | `POST`   | `/chaos/status/{code}`   | All HTTP requests to API paths will return the given HTTP status code              |
